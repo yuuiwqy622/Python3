@@ -5,7 +5,7 @@ from itertools import chain
 
 def type_check(func):
     def checked(*args, **kwargs):
-        a = list(func.__annotations__.values())
+        a = iter(func.__annotations__.values())
         t = chain((type(a) for a in args), (type(k) for k in kwargs.values()))
 
         for a, t in zip(a, t):
